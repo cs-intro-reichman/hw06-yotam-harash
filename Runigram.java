@@ -139,20 +139,28 @@ public class Runigram {
 	 * The image is scaled (resized) to have the given width and height.
 	 */
 	public static Color[][] scaled(Color[][] image, int width, int height) {
-		Color[][] ans = new Color[height][width];
-		int imageWidth = image[0].length;
-		int imageHeight = image.length;
-		for (int i = 0; i < height; i++) {
-			for (int j = 0; j < width; j++) {
-				int i1 = i * imageHeight / height;
-				int j1 = j * imageWidth / width;
-				int r = image[i1][j1].getRed();
-				int g = image[i1][j1].getGreen();
-				int b = image[i1][j1].getBlue();
-				ans[i][j] = new Color(r, g, b);
-			}
-		}
-		return ans;
+		int originalWidth = image.length;
+        int originalHeight = image[0].length;
+
+        double widthScaleFactor = (double) originalWidth / width;
+        double heightScaleFactor = (double) originalHeight / height;
+
+        Color[][] scaledImage = new Color[width][height];
+
+        for (int i = 0; i < width; i++) {
+            for (int j = 0; j < height; j++) {
+                int originalX = (int) (i * widthScaleFactor);
+                int originalY = (int) (j * heightScaleFactor);
+
+                // Ensure the original coordinates are within bounds
+                originalX = Math.min(originalX, originalWidth - 1);
+                originalY = Math.min(originalY, originalHeight - 1);
+
+                scaledImage[i][j] = image[originalX][originalY];
+            }
+        }
+
+        return scaledImage;
 	}
 	
 	/**
