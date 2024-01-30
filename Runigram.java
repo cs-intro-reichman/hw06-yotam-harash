@@ -92,8 +92,8 @@ public class Runigram {
 		
 		Color[][] imageflipped = new Color[image.length][image[0].length];
 		for (int i = 0; i < image.length; i++) {
-			for (int j = 0; j < image[i].length; j++) {
-				imageflipped[i][image[i].length - 1 - j] = image[i][j];
+			for (int j = 0; j < image[0].length; j++) {
+				imageflipped[i][j] = image[i][image[0].length-j-1];
 			}
 		}
 
@@ -106,9 +106,9 @@ public class Runigram {
 	public static Color[][] flippedVertically(Color[][] image){
 		
 		Color[][] imageflipped = new Color[image.length][image[0].length];
-		for (int i = 0; i < image[0].length; i++) {
-			for (int j = 0; j < image.length; j++) {
-				imageflipped[image.length - 1 - j][i] = image[j][i];
+		for (int i = 0; i < image.length; i++) {
+			for (int j = 0; j < image[0].length; j++) {
+				imageflipped[j][i] = image[image[0].length-j-1][j];
 			}
 		}
 
@@ -212,11 +212,14 @@ public class Runigram {
 	 */
 	public static void morph(Color[][] source, Color[][] target, int n) {
 		
-		Color[][] b = scaled(target, source.length, source[0].length);
+		target = scaled(target, source.length, source[0].length);
 		for(int i=0;i<=n;i++)
 		{
 			double a=(n-i)/n;
-			source=blend(source,b,a);
+			source=blend(source,target,a);
+			display(target);
+			StdDraw.pause(500);
+
 
 		}
 
