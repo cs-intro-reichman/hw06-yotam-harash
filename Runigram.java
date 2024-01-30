@@ -152,9 +152,7 @@ public class Runigram {
                 int originalX = (int) (i * widthScaleFactor);
                 int originalY = (int) (j * heightScaleFactor);
 
-                // Ensure the original coordinates are within bounds
-                originalX = Math.min(originalX, originalWidth - 1);
-                originalY = Math.min(originalY, originalHeight - 1);
+                
 
                 scaledImage[i][j] = image[originalX][originalY];
             }
