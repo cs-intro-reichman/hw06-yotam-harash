@@ -75,9 +75,8 @@ public class Runigram {
 		{
 			for(int j=0;j<image[0].length;j++){
 				
-				
 				print(image[i][j]);
-				if (j==image[0].length-1) {
+				if (j==(image[0].length-1)) {
 					System.out.println();
 				}
 			}
@@ -91,30 +90,29 @@ public class Runigram {
 	 */
 	public static Color[][] flippedHorizontally(Color[][] image) {
 		
-		Color[][] imagefliped = new Color[image.length][image[0].length];
-		for(int i=0;i<image.length;i++)
-		{
-			for(int j=0;j<image[0].length;j++){
-				imagefliped[i][image[0].length-1-j]=image[i][j];
+		Color[][] imageflipped = new Color[image.length][image[0].length];
+		for (int i = 0; i < image.length; i++) {
+			for (int j = 0; j < image[i].length; j++) {
+				imageflipped[i][image[i].length - 1 - j] = image[i][j];
 			}
 		}
 
-		return imagefliped;
+		return imageflipped;
 	}
 	
 	/**
 	 * Returns an image which is the vertically flipped version of the given image. 
 	 */
 	public static Color[][] flippedVertically(Color[][] image){
-		Color[][] imagefliped = new Color[image.length][image[0].length];
-		for(int i=0;i<image[0].length;i++)
-		{
-			for(int j=0;j<image.length;j++){
-				imagefliped[image[0].length-1-j][i]=image[j][i];
+		
+		Color[][] imageflipped = new Color[image.length][image[0].length];
+		for (int i = 0; i < image[0].length; i++) {
+			for (int j = 0; j < image.length; j++) {
+				imageflipped[image.length - 1 - j][i] = image[j][i];
 			}
 		}
 
-		return imagefliped;
+		return imageflipped;
 		
 	}
 	
