@@ -122,7 +122,7 @@ public class Runigram {
 	public static Color luminance(Color pixel) {
 		
 		int cons=(int)((pixel.getRed()*0.299)+(pixel.getGreen()*0.587)+(pixel.getBlue()*0.114));
-		Color c1 = new Color(col,col,col);
+		Color c1 = new Color(cons,cons,cons);
 		return c1;
 	}
 	
@@ -158,7 +158,8 @@ public class Runigram {
 
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
-                int originalX = (int) (i * widthScaleFactor);
+                
+				int originalX = (int) (i * widthScaleFactor);
                 int originalY = (int) (j * heightScaleFactor);
 
                 scaledImage[i][j] = image[originalX][originalY];
